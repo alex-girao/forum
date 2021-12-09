@@ -7,9 +7,11 @@ import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode
+@NoArgsConstructor
 @Entity
 public class Curso {
 
