@@ -28,7 +28,7 @@ public class AutenticacaoController {
 		try {
 			// chama o autentication service, se nao dere certo ele dispara a exception AuthenticationException
 			Authentication authentication = authManager.authenticate(login);
-			
+			//String token = 
 			return ResponseEntity.ok().build();
 		}catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().build();
