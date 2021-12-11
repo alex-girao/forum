@@ -56,6 +56,7 @@ public class TopicosController {
 	@PostMapping
 	@Transactional
 	// limpa o cache para todos os dados
+	// TODO mover para o endpoint do curso
 	@CacheEvict(value = "listDeTopicos", allEntries = true)
 	public ResponseEntity<TopicoDto> cadastrar
 		(@RequestBody @Valid TopicoForm form, 
