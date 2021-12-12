@@ -1,9 +1,15 @@
 # forum
 Api que simula um forum de dúvidas.
-(SpringBoot, JPA, H2 Database, Lombok, Carga Inicial automática)
+(SpringBoot, JPA, H2 Database, Lombok, Actuator, Swagger/SpringFox)
 
 URL base da Aplicação
- * Running on http://localhost:8080/
+```bash
+Running on http://localhost:8080/
+```
+URL de acesso a documentação
+```bash
+http://localhost:8080/swagger-ui.html
+```
 
 ## Banco de dados
  * URL: http://localhost:8080/h2-console

@@ -46,7 +46,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		// mapeando urls publicas
 		.antMatchers(HttpMethod.GET, "/topicos").permitAll()
 		.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
+		// url de autenticacao
 		.antMatchers(HttpMethod.POST, "/auth").permitAll()
+		// url para consumo do actuator
 		.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
 		// autenticacao necessaria para todas as outras
 		.anyRequest().authenticated()
@@ -66,6 +68,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	// configuracoes de recursos estaticos(css, js, imgs e etc.)
 	@Override
 	public void configure(WebSecurity web) throws Exception {
+		//ignorar as requisicoes do swagger
+		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
 	}
 	
 	// cofiguracao para injecao de dependencia do AutenticationManager
