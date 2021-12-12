@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.alexgirao.forum.config.security.TokenService;
+import br.com.alexgirao.forum.controller.dto.TokenDto;
 import br.com.alexgirao.forum.controller.form.LoginForm;
 
 @RestController
@@ -22,14 +24,17 @@ public class AutenticacaoController {
 	@Autowired
 	private AuthenticationManager authManager;
 	
+	@Autowired
+	private TokenService tokenService;
+	
 	@PostMapping
-	public ResponseEntity<?> autenticar(@RequestBody @Valid LoginForm form){
+	public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LoginForm form){
 		UsernamePasswordAuthenticationToken login = form.converter();
 		try {
 			// chama o autentication service, se nao dere certo ele dispara a exception AuthenticationException
 			Authentication authentication = authManager.authenticate(login);
-			//String token = 
-			return ResponseEntity.ok().build();
+			String token = tokenService.gerarToken(authentication); 
+			return ResponseEntity.ok(new TokenDto(token, "Bearer"));
 		}catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().build();
 		}
