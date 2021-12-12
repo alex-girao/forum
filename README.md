@@ -1,6 +1,6 @@
 # forum
 Api que simula um forum de dúvidas.
-(SpringBoot, JPA, H2 Database, Lombok, Actuator, Swagger/SpringFox)
+(SpringBoot, JPA, H2 Database, Lombok, Actuator, Swagger/SpringFox, Testes Automatizados)
 
 URL base da Aplicação
 ```bash

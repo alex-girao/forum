@@ -50,6 +50,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.POST, "/auth").permitAll()
 		// url para consumo do actuator
 		.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+		// somente moderadores podem remover topicos
+		.antMatchers(HttpMethod.DELETE, "/topicos/**").hasRole("MODERADOR")
 		// autenticacao necessaria para todas as outras
 		.anyRequest().authenticated()
 		// formulario de autenticacao, mas neste caso utiliza sessao 
