@@ -20,7 +20,8 @@ import br.com.alexgirao.forum.controller.form.LoginForm;
 
 @RestController
 @RequestMapping("/auth")
-@Profile("prod")
+// carreando para varios ambientes
+@Profile(value = {"prod","test"})
 public class AutenticacaoController {
 	
 	@Autowired
